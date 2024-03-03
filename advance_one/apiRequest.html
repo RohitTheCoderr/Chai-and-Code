@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: white;">
+      <h2>READY STATE</h2>
+
+    Value =  State	-  Description
+    0     =	 UNSENT	->  Client has been created. open() not called yet.
+    1     =  OPENED	->  open() has been called.
+    2	  =  HEADERS_RECEIVED	->  send() has been called, and headers and status are available.
+    3	  =  LOADING	->  Downloading; responseText holds partial data.
+    4	  =  DONE	->  The operation is complete.
+
+<div class="divimg">
+    <img class="img1" src="" alt="" >
+    <h2 id="follower_h2"><span></span> </h2>
+    <button>click me</button>
+</div>
+
+    <script>
+
+        const requestUrl= 'https://api.github.com/users/RohitTheCoderr'
+        const xhr= new XMLHttpRequest();
+        xhr.open('GET', requestUrl );
+        xhr.onreadystatechange =function(){
+        console.log(xhr.readyState);
+        if (xhr.readyState===4) {
+        //     // directelly json se hamara data string me aati h some time directelly object me aa jati h usi ko ham. 
+            const data = JSON.parse(this.responseText)  // pahle ye string me data aa rhi thi but hame to object me chahiye the ham pahle dekh chuke h ki string to number me change kanre ke liye uske aage Number laga dete the aur string ke liye String laga dete the thik esi tarah jav hamara data JSOn se aa rha ho to use ham object me change krne ke liye JSON.parse laga dete h jisse data object me converd ho jata h 
+        //     // json.parse karen se pahle typeof check karen se ye string me aa rha th but ab ye ek object me ho gya h 
+            console.log( data)
+        //     // ab ham us data me se kisi ko bi accesse kr sakte h like
+            // console.log(data.avatar_url);
+            // let imgurl=data.avatar_url
+            // let followers=data.followers
+            // console.log(followers);
+            // console.log(imgurl);
+//             const div = document.createElement("div")
+//         div.innerHTML=`<img src="${imgurl}" alt="rohit" height="200px  width="100px">`
+// const body= document.querySelector("body")
+// body.appendChild(div)
+
+// we can also use url in already define in img tag like  
+// const img=document.querySelector(".img1")
+// img.src=imgurl;
+
+const btn= document.querySelector("button");
+
+let imgurl=data.avatar_url
+let followers=data.followers
+
+console.log(followers);
+btn.onclick=function(){
+    const img=document.querySelector(".img1")
+    const follower_h2= document.querySelector("#follower_h2")
+    img.style.borderRadius="10%"
+    img.style.height="300px"
+    img.style.width="200px"
+      img.src=imgurl;
+       follower_h2.innerHTML=`Followers: <span style="color:red">${followers}</span>`
+       
+}    
+}
+}
+xhr.send();
+
+    </script>
+</body>
+</html>

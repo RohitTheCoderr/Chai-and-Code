@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body {
+        margin: auto;
+        padding: 5px;
+        background-color: #212111;
+        color: aliceblue;
+      }
+
+      nav {
+        background-color: teal;
+        color: black;
+        height: 5rem;
+        width: auto;
+        border: 2px solid white;
+        border-radius: 5px;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .navBtn {
+        height: 3rem;
+        font-size: 20px;
+        background-color: yellow;
+        color: black;
+        border-radius: 7px;
+        border: 2px solid red;
+      }
+      .navBtn:hover {
+        background-color: yellowgreen;
+      }
+
+      .form_div {
+        text-align: center;
+      }
+      form {
+        height: auto;
+        width: auto;
+        background-color: springgreen;
+        color: black;
+        border: blue;
+        padding: 10px;
+        font-size: 18px;
+      }
+      .signUp_form {
+        display: none;
+        /* display: block; */
+      }
+      .Login_form {
+        /* display: block; */
+        display: none;
+      }
+
+      input {
+        height: 2rem;
+        font: 600;
+        font-size: 16px;
+        border: 1px solid blue;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <button class="navBtn" id="signup_btn">Click for SignUp</button>
+      <button class="navBtn" id="login_btn">Click for Login A/c</button>
+    </nav>
+    <div class="form_div">
+      <form action="" class="signUp_form">
+        <h2>Sign-Up Form</h2>
+        Email:-
+        <input class="signEmail" type="email" name="" id="emailSign" placeholder="Enter Email" />
+
+        <br />
+
+        Password:-
+        <input class="input1" type="password" placeholder="Enter password" />
+
+        <br />
+        Conform-password:-
+        <input class="input2" type="password" placeholder="Enter password" />
+        <br />
+        <br />
+        <input class="submit" type="submit" value="Submit" />
+      </form>
+
+      <form action="" class="Login_form">
+        <h2>Login Form</h2>
+        Email:- <br /><input  type="email" name="email"  id="emailLogin"  placeholder="Enter Your Email"/>
+        <br />
+        Password:- <br /><input class="password" type="password" placeholder="Enter password" />
+        <br /><br />
+        <input class="submit2" type="submit" value="Submit" />
+      </form>
+    </div>
+    <script>
+
+      const signup_btn = document.querySelector('#signup_btn')
+      const Login_btn = document.querySelector('#login_btn')
+      const Email = document.querySelector(".signEmail")
+      // console.log(Email);
+      const password = document.querySelector(".input1");
+      const conpassword = document.querySelector(".input2");
+      const submit = document.querySelector(".submit");
+      const signForm = document.querySelector(".signUp_form")
+      const LoginForm = document.querySelector(".Login_form")
+     
+      // ####### click any one button signup or login button
+signup_btn.addEventListener('click', function () {
+  signForm.style.display="block"
+  LoginForm.style.display='none'
+})
+Login_btn.addEventListener('click', function () {
+  LoginForm.style.display="block"
+  signForm.style.display="none"
+})
+
+let savepassword= "1see"
+    submit.addEventListener('click', function (e) {
+      e.preventDefault();
+        if (password.value == "" || conpassword.value == ""  || Email.value=='') {
+          alert("please fill your all first");
+        } else {
+          if (password.value === conpassword.value) {
+            savepassword = password.value;
+            alert(savepassword);    
+            } else {
+            alert("ooh so sad both are different");
+
+          }
+        }
+        password.value = "";
+        conpassword.value = "";
+        Email.value="";
+        
+      });
+
+      console.log(savepassword);
+
+
+
+
+
+    </script>
+  </body>
+</html>

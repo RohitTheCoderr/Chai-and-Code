@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="project1.js" defer></script>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        background: #212121;
+        color: chocolate;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: cadetblue;
+      }
+      nav a {
+        color: pink;
+        margin: 1rem;
+        text-decoration: none;
+        font-size: 20px;
+        background-color: #212121;
+        padding: 0.5rem;
+        border: 2px solid red;
+      }
+      nav a:hover {
+        color: rgb(242, 51, 51);
+      }
+      .container {
+        height: 100vh;
+        width: 100vw;
+        display: flexbox;
+        justify-content: center;
+        position: fixed;
+      }
+      h2,
+      h3 {
+        display: flex;
+        justify-content: center;
+      }
+      .color-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .button {
+        border: 2px solid black;
+        border-radius: 50% 0% 50% 50%;
+        height: 50px;
+        width: 50px;
+        margin: 5px;
+        rotate: -45deg;
+      }
+
+      #box1 {
+        background-color: gray;
+      }
+      #box2 {
+        background-color: white;
+      }
+      #box3 {
+        background-color: blue;
+      }
+      #box4 {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body id="body">
+    <nav>
+      <a href="#body" aria-current="page">Home</a>
+      <a href="http://www.youtube.com/@collegeboy4362" type="_blank"
+        >Youtube chennel</a
+      >
+    </nav>
+    <div class="container">
+      <h2>COLOR SCHEME SWITCHER</h2>
+      <div class="color-content">
+        <div class="button" id="box1"></div>
+        <div class="button" id="box2"></div>
+        <div class="button" id="box3"></div>
+        <div class="button" id="box4"></div>
+      </div>
+
+      <h3>Try clicking on one of the colors above</h3>
+      <h3>to change the backgorund color of the page!!!</h3>
+    </div>
+  </body>
+</html>

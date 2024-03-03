@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keydown Event</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: #212121;
+        color: #eee;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #e7e7e7;
+      }
+
+      .project {
+        height: 100vh;
+        background-color: #212121;
+        color: #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .color {
+        color: aliceblue;
+        display: flex;
+        flex-direction: row;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="project">
+      <div id="insert">
+        <div class="key">Press any key and watch magic</div>
+      </div>
+    </div>
+
+    <script>
+      const insert = document.querySelector("#insert");
+      console.log(insert);
+
+      window.addEventListener("keydown", (e) => {
+        insert.innerHTML = `<div class='color'>
+            <table>
+
+                <tr>
+                    <th>key</th>
+                <th>keyCode</th>
+                <th>Code</th>
+                </tr>
+              <tr>
+                <td>${e.key === ' ' ? 'rohit space ':e.key}</td>   
+                <td>${e.keyCode}</td>
+                <td>${e.code}</td>
+                </tr>    
+            </table>
+                </div>`;
+      });
+      // space dabane per kuch print nhi hota h key me sirf keycode print hota h usi ke liye ham 
+      // upar e.key === " " ? 'space':e.key ka matlab h ki agr e.key me space ke kisi ne press kiya h to vaha space likha aa jaye othervies vo key hi print ho jaye ho press kiya h ye condition same if else sa work karta h  
+    </script>
+  </body>
+</html>

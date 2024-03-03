@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nodelist| chai and code</title>
+
+    <style>
+        body{
+            background: #212121;
+            color: #ffff;
+        }
+    </style>
+</head>
+<body>
+ 
+
+    <script>
+    const div =document.createElement("div");
+    console.log(div);
+    div.className ="main-div";
+    // we taking a id name is main
+    div.id ="main"
+    // just for fun we take a id name by using Math.random method like
+    // div.id =Math.random()        // by using this method after every refrese we have different id name 
+    //  div.id= Math.round(Math.random()+4)  //  esse ye hoga ki every time taking random num nearest 4 and round is use for remove after .number(only taking integer number)
+    div.setAttribute("title", "generated title");
+    div.style.padding ="10px";
+    div.style.backgroundColor ="pink";
+    // div.innerText = "Chai and Code";
+
+    // we can also add text in this div like
+    // for that firstly we create a text node
+     const addText =document.createTextNode("Chai and code")
+    //  and 2nd  we append in the div like
+    div.appendChild(addText)
+    document.body.appendChild(div);
+    </script>
+</body>
+</html>

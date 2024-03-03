@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing Nature Image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" height="130px" src="/imagesfolder/img1.jpg" alt="photoshop" id="photoshop"></li>
+            <li><img width="200px" height="130px" src="/imagesfolder/bg2.jpg" alt="" id="Iland"></li>
+            <li><img width="200px" height="130px" src="/imagesfolder/bg3.jpg" alt="" id="brige"></li>
+            <li><img width="200px" height="130px" src="/imagesfolder/bg4.jpg" alt="" id="evening"></li>
+            <li><img width="200px" height="130px" src="/imagesfolder/bg5.jpg" alt="" id="singletree"></li>
+            <li><img width="200px" height="130px" src="/imagesfolder/Nature image.jpeg" alt="river" id="photoshop"></li>
+            <li><a href="https://google.com" id="google" style="color:white ;">go to google</a></li>
+        </ul>
+    </div>
+
+
+
+    <script>
+
+        // if we want to add onclick event. for that we have 3 way to add onlick event firstly we directely use in html tag onclick=""
+        // 2nd way we can use like   
+        // document.getElementById("Iland").onclick = function(){
+        //     alert("this is Iland image")
+        // }
+        // NOTE:- here as a 1way 2nd way is use better but3rd way is more useable and better to another 1 and 2 way
+        // 2nd way is good but they are provide less feature as 3rd way
+        // 3rd way
+        // document.getElementById("Iland").addEventListener('click', function (e) {
+        //     console.log(e);
+        // })
+
+//  we study now 
+// type timestamb defaultPrevented
+// target, toElement, srcElement, currentTarget,
+//  clicntX ,  clicntY, srceenY, screenY
+
+
+// bubble event means(down to up)
+// here you can see that ul inside some li and both have a id name 
+// here we select a ul from id name and we set a click Event  if click any place on ul then message print h click inside ul
+// you know li is also inside ul so if we click on any li then also tha print the message same  
+
+// document.getElementById("images").addEventListener("click" , function (e) {
+//     console.log("click onside ul");
+// }, false)
+
+//  but what will be do if we also set a clickc Event on li which message is print first li or ul
+
+// document.getElementById("brige").addEventListener("click" , function (e) {
+//     console.log("click on brige");
+// }, false)
+
+// let's come for see thya output in console
+//  note:- aap dekh sakte h ki agr ham ul ke kisi bhi jagah click karte h chahe vo li hi kyo na ho vo ul chalta h but agr ham jis li ko select kiya tha us par click karte  h to sabse pahle li ka message print hota h 
+//  esa isliye kyoki ye bubble Event h example jab ham pani me bubble banate h to  sabse pahle vo niche se upr fulta h 
+//  thik esi trah ul ki ander li h li ke ander image h isliye jab ham li pr click kr rhe h to ul ka message prnit na ho ke pahle us li pr set event work kar rha h 
+//  yha hame bubble ke liye false lanage ki jarurat nhi h 
+//  but if ham chate h ki pahle ul ka message parint ho li ka bad me means bubble sistem work na kare to uske liye hame true likhna padega jaha false likha h 
+// document.getElementById("images").addEventListener("click" , function (e) {
+//     console.log("click onside ul");
+// }, true)
+// document.getElementById("brige").addEventListener("click" , function (e) {
+//     console.log("click on brige");
+// }, true)
+//  note :- jab hame bubble ko rok dete h true laga kar to ese ham capturing event bote h 
+// vo hamare uper hota h ki ham kon sa case use karna chahte h
+
+
+
+// document.getElementById("images").addEventListener("click" , function (e) {
+//     console.log("click onside ul");
+// }, false)
+
+// but  kai bar ham chahte h ki ham jab click kre to bubble na yani jispr click kre sirf vhi work kre to uske liye ham bubble hone se rok sakte h 
+//  jis tarah hamare pass preventDefault() hote h thik esi tarah stopPropageation() hote h 
+// document.getElementById("brige").addEventListener("click" , function (e) {
+//     console.log("click on brige");
+//     e.stopPropagation()
+// }, false)
+
+//  ab ham jis pr click kr rhe h sirf vhi event work kr rha h
+
+// document.getElementById("google").addEventListener("click", function (e) {
+//     console.log("google clicked")
+//     e.stopPropagation()     // esse bubbleing nhi hoga 
+//     e.preventDefault()     // aap dekhe ki preventDefault lagane se ye google page pr nahi pahuch rha h 
+// }, false)
+
+//  real example
+
+// document.getElementById("images").addEventListener("click", function (e) {
+//     // console.log(e);   //  sirf event ko print krne se ye ho rha h ki kahi pr bi click hone se ye click event ho rha h but ye kaha click hne se ye event ho rha h uske liye ham target use kar sakte h  
+//     // console.log(e.target);   // ab ye to pata chal rha h ki ham jaha click kra kre h vo print ho ja rha h but agr ham cheh ki jis pr click kre uske parent node print ho to uske liye ham uske parent ko target kr sakte h like
+//     console.log(e.target.parentNode) // aap dekhe ki agr mai li pr click krta hu to uske parent ul print ho rha h aur ham image pr click krta hu to uske parent li print hota h esse to ye pata chal gya ki ham esse kuch bi kara skte h like
+
+//     let removeIt= e.target.parentNode   // ab ham jis pr bi click krenge uske parent node remove ho jayega like check
+//     removeIt.remove();
+//     // note:- agr ham img pr click krte h to li remove h gya aur li pr click kret h to pura ul remove ho gya 
+//     //  esi trah agr ham google pr click karte h  to bi ul pura ka pura delelete ho ja rha h esa isliye kyoki vo bi ek li ke andr h 
+// })
+
+
+//  but ham chahte h ki agr li pr click ho to ul remove na ho 
+
+document.getElementById("images").addEventListener
+("click", function (e) {
+   console.log(e.target.tagName);    // event me hamare pass ek target.tagName bi hota h jisse ham us tag ko target kr sakte h jis pr event click ho rha ho isse ham us pr kaam bi akr sakte h like
+   if (e.target.tagName==="IMG") {
+       let removeIt= e.target.parentNode   
+       removeIt.remove();
+   }
+})
+// note:- ab esse kya ho rha h ki agr tagName pr click ho agr uski tagName IMG ho o hi uske parentNode remove ho jaye
+
+//  time 3:54:46 pause video
+
+    </script>
+</body>
+</html>

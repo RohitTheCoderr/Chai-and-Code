@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PROJECT -3</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: #0e0d0d;
+        color: white;
+    
+      }
+      .main-con{
+        width:auto;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    background-color: tomato;
+}
+#form{
+  width:auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  label{
+    width: 20rem;
+    font-size: 3rem;
+    padding: 5px;
+    font-style: italic;
+  }
+  input{
+    width: 10rem;
+    text-align: center; 
+     padding: 5px;
+  margin: 10px;
+  /* background-color: green; */
+  outline: none;
+  border: none;
+}
+#guessfield{
+  border: 5px solid rgb(176, 203, 188);
+  font-size: medium;
+}
+#subBtn{
+  color: rgb(0, 0, 0);
+  font-size:large;
+  border-radius: 10px;
+  background-color: #2fff00;
+  /* transition: all 1s; */
+  cursor: pointer;
+}
+#subBtn:hover{
+scale: (1.1);
+background-color: blue;
+color: white;
+}
+.guesses{
+  padding: 2px 10px;
+  background-color: #c1ffb3;
+  color: black;
+}
+ .lastResult{
+ padding:1px 5px;
+  background-color: red;
+} 
+
+
+/* javascript function endGame h2 ki id h  */
+#newGame{
+  background-color: teal;
+cursor: pointer;
+}
+#newGame:hover{
+  color: black;
+}
+    </style>
+  </head>
+  <body>
+    <div class="main-con">
+          <h1>Number Guessing Game</h1>
+        <p>Try and guess a random number between 1 to 100.</p>
+        <p>You have 10 attempts to guess the right number.</p>
+        <br>
+        <form action="" id="form">    
+          <label for="guessField" id="guess">Guess a number</label>
+          <input type="text" id="guessfield" class="guessField" placeholder="guess number here"/>
+          <!-- <input type="text"> -->
+          <input  type="submit" id="subBtn"  class="guessSubmit"  value="submit guess" />
+        </form>
+        <div class="resultParas">
+          <p>Previus Guesses : <span class="guesses"></span></p>
+          <p>Guesses Remaining: <span class="lastResult">10</span></p>
+          <p class="lawOrHi"></p>
+        </div>
+    </div>
+
+    <script>
+   let randomNum= (parseInt(Math.random()*100+1))
+   console.log(randomNum);
+   const submitBtn= document.querySelector('#subBtn')
+   const userInput= document.querySelector('#guessfield')
+   const guessSlot =document.querySelector('.guesses')
+   const remaining =document.querySelector('.lastResult')
+   const suggest =document.querySelector('.lawOrHi')
+   const startOver =document.querySelector('.resultParas')
+
+   const p =document.createElement('p')
+
+// hamne ek array banaya h jisme user ke value store karayenge taki user ko ye value dikha sake ki vo ye sab value guess kar liya use vo dubara guess  na kare 
+   let prevGuess =[]
+
+  //  yha h ek valriable banaya h jo ye batayega ki user ne kitne bar number guess kar liya h 
+   let numGuess = 1
+
+  //  thik esi tarah ek playgame  name ka variabble bana liya h taki user ese play kar sake game ek  bar khatam ho jane ke bad
+   let playGame =true;
+
+// sabse pahle to condition lagaya ki game khelne me sakshm ho ya nhi 
+if (playGame) {
+  submitBtn.addEventListener('click', function (e) {
+    e.preventDefault()         // kyoki esme form use kiya h jise browser server pr le kar jata h use rokne ke liye event.preventDefault lagaya ki form ko kahi submit mat karo event ke pass rahne do 
+    // here jo input hamne user se liye the use uski value ko yha le liya jise parseInt use kr ke intger me converd kr liya jise guess variable me store kara duya
+    const guess =parseInt(userInput.value)
+    // fir us validguess function ke parameter me daal diya
+    // console.log(guess)
+    validguess(guess)
+  });
+}
+
+
+// yaha ek fun banayenge jisme kuch condition laga denge taki jaise use kisi number ke alaba kuch na likhe and kahi negative num na insert kare ya out of number na insert kre etc
+ function validguess(guess) {
+  // ham yha kuch condition check krenge 
+  if (isNaN(guess)) {
+    alert('please enter a valid number')
+  }
+  else if(guess<1 || guess>100){
+alert("please enter valid number between 1 to 100")
+  }
+  else{
+  prevGuess.push(guess)
+  if (numGuess===10) {
+    displayGuess(guess)
+    displayMessage(`Game Over Now!!. Random number was ${randomNum}`)
+    endGame()
+  }
+  else{
+    displayGuess(guess)
+    checkGuess(guess)
+  }
+}
+ }
+
+//  ham ek aur fun bnayenge jo check karega ki number sahi h ya nhi means actual number se high  h ya low h etc jisse msg print kra sake 
+function checkGuess(guess) {
+  // 
+  if (guess === randomNum) {
+    displayMessage('You guessed it right you are winner 🥳🥇🏁🥳')
+    endGame()
+  }
+  else if (guess < randomNum) {
+    displayMessage('Number is Too low ')
+  }
+  else if (guess > randomNum) {
+    displayMessage('Number is Too high ')
+  }
+}
+
+
+function displayGuess(guess) {
+  userInput.value='';
+  guessSlot.innerHTML +=`${guess}  `
+  numGuess ++;
+  remaining.innerHTML = `${11 - numGuess}`
+
+}
+
+function displayMessage(message) {
+  // 
+  suggest.innerHTML =`<h2>${message}</h2>`
+}
+
+
+// ek fun bnaya game ko end karne ke liye
+
+function endGame() {
+   userInput.value="";
+   userInput.setAttribute('disabled', '')
+   p.classList.add("button")    // hamne  uper ek p tag create kiya tha globle scope me usi ko hamne yha use kiya h 
+   p.innerHTML =`<h2 id ="newGame">Start new game</h2>`;    // usi ke andr ham ek innerHTMl banaya jisme h2 tag bana ke uske ander kuch value pass ki 
+   startOver.appendChild(p)     // fir usi p tag ko hamne startOver ke andr append child ke roop me append kr diya 
+   playGame =false  ;     // ab hamne playgame ki value false kr diya 
+  newGame()
+  }
+//  ek aur fun banaya taki end game hone ke bad fir se game strt ho sake
+function newGame() {
+ const newGameButton = document.querySelector('#newGame')    // abhi hamne endGame fun me ek h2 tag banaya tha p tag me jiski id hamne newGame rakha
+newGameButton.addEventListener('click', function (e) {
+  randomNum= (parseInt(Math.random()*100+1)); 
+  prevGuess=[];
+  numGuess =1
+  // checkGuess();
+  guessSlot.innerHTML=''
+  remaining.innerHTML=`${11-numGuess} `;
+  userInput.removeAttribute('disabled')
+  startOver.removeChild(p);
+  playGame =true
+})
+
+}
+
+  //  console.log(suggest);
+    </script>
+  </body>
+</html>

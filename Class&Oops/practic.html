@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font: 500;
+            background-color: #212121;
+            color: white;
+            
+        }
+
+        .form_div{
+            height: 450px;
+            width: 500px;
+            border: 3px solid gray;
+            border-radius: 20px;
+            background-color:coral ;
+            color: black;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            
+            font-size: 25px;
+        }
+        input{
+            height: 2rem;
+            width: 20rem;
+            outline: none;
+            border: 2px solid green;
+            padding: 5px;
+            font-size: 22px;
+        }
+        input:hover{
+            background-color: rgb(201, 168, 255);
+        }
+        button{
+            height: 3rem;
+            width: auto;
+            padding:4px;
+            color: red;
+            background-color: blue;
+            font-weight: bold;
+            font-size: 25px;
+            outline: none;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form_div">
+    Email: <input type="email" placeholder="Enter your email">               <br>
+    Password<input type="password" name="password" placeholder="Enter password"> <br>
+    Conform-password<input type="password" name="con_password" placeholder="conform password"> <br>
+    <button>Click-me</button>
+</div>
+
+
+<script>
+
+    const button= document.querySelector("button")
+    
+    button.onclick=function() {
+        
+        const email= document.querySelector("input[type='email']").value
+        const password= document.querySelector("input[name='password']").value
+        const con_password= document.querySelector("input[name='con_password']").value
+    class user{
+        constructor(email, password, con_password){
+            this.email=email;
+            this.password =password;
+            this.con_password =con_password
+        }
+
+      get email(){
+       return `Your Email is: ${this._email.toUpperCase()}`
+      }
+
+      set email (value){
+        this._email = value
+      }
+    // for password
+    
+      get password(){
+       return `Your Password is: ${this._password}`
+      }
+
+      set password (passsvalue){
+        this._password = passsvalue
+      }
+
+
+    }
+    const User1 =new user(`${email}`, `${password}`, `${con_password}`)
+console.log(User1.password);
+console.log(User1.email);
+
+const body =document.body
+const div =document.createElement("div")
+const p1 =document.createElement("p")
+const p2 =document.createElement("p")
+p1.innerText=`${User1.email}`
+p2.innerText=`${User1.password}`
+div.appendChild(p1)
+div.appendChild(p2)
+body.appendChild(div)
+
+
+// button ko disable kar diya yani ek barclick hone ke bad us pr click nhi kar sakte h 
+button.setAttribute('disabled', '')
+// button.disabled()
+ }
+
+// video pause  9:25
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | chai and code</title>
+    <style>
+        body{
+            background: #212121;
+            color: #ffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day"><p>Tuesday</p></div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+        <div class="day">friday</div>
+    </div>
+</body>
+
+<script>
+//    const parent= document.querySelector(".parent");
+//     // console.log(parent);
+//     // console.log(parent.children);
+//     // console.log(parent.children[0].innerHTML);
+
+//     for (let i = 0; i < parent.children.length; i++) {
+//         const element = parent.children[i].innerHTML;
+//         console.log(element);               
+//         if (parent) {
+//             parent.style.backgroundColor= 'red'
+//             parent.style.padding ="10px"
+//             parent.style.border ="3px solid gray"
+//         }
+//         if (parent.children[i]) {
+//             parent.children[4].style.color= 'blue'
+//             parent.children[1].style.color= 'red'
+//             parent.children[1].style.backgroundColor='green' 
+//             parent.children[1].style.border ='2px dotted yellow'
+//             parent.children[1].style.padding= '10px'
+
+//         }
+//     }
+//     let child2= parent.children[2]
+//     console.log(child2.innerText);
+//     child2.style.color= 'red'
+//     child2.style.backgroundColor= 'pink'
+//     child2.style.border='2px double blue'
+//     child2.innerHTML ='Rohit'
+
+//     console.log(parent.firstElementChild.innerHTML);
+//     console.log(parent.lastElementChild.innerHTML);
+
+
+//  as same as  we reach child to parent and work on that like
+
+const day1 = document.querySelector(".day")
+// console.log(day1);
+
+// day1.style.backgroundColor='green'
+// console.log(day1.parentElement);
+
+const parent= day1.parentElement;
+// console.log(parent);
+// console.log(parent.children);
+// console.log(parent.children[0].innerHTML);
+// parent.style.backgroundColor= "red"
+// parent.style.color= "black"
+// parent.style.border ="4px dotted pink"
+// parent.style.padding ="5px"
+
+// // we can also reach day1 to day2 and any days like
+
+// const day2= day1.nextElementSibling;
+// // const day2= day1.nextElementSibling.innerText;
+// console.log(day2);
+// day2.style.backgroundColor="blue"
+
+//  we have some intersting things
+console.log("NODES:" ,parent.childNodes);
+
+</script>
+</html>

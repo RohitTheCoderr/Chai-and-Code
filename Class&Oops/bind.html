@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Button Clicked</button>
+</body>
+
+<script>
+    class react {
+        constructor(){
+            this.library ="react"
+            this.server = "https://localhost:300"
+
+            //requirment
+
+            document.querySelector("button").addEventListener('click', this.handleClick.bind(this))   // yha bind(this) ka mtlb h ki bins kar diya sab this ko ab ham agr handleClick me console.log me this.server karayenge to server ka reference aa jayega 
+            
+        }
+        handleClick (){
+            console.log("button clicked");
+            // console.log(this.server);  // accha jab ham  button pr click kr rhe h to ye this.server ka reference kahi kho gya h accha check karte h ki kho gya h ya reference hi nhi mil rha h uske liye ham sirf this ko log karate h 
+            console.log(this);   // this ko log karane se pata chala ki this ka to reference to mil rha yani es this ko kisne call kiya button ne to button ka to refwerence to aa rha h 
+            console.log(this.server);                  //
+        }
+    }
+
+    const app = new react();
+
+
+</script>
+</html>

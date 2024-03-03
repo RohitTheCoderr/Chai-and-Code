@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure</title>
+  </head>
+  <body style="background-color: #212121;">
+    <script>
+      function init() {
+       let name = "mozilla"; // name is local variable created by init
+
+        function displayName() {
+          // displayName() is tha inner function , that forms the closure
+          console.log(name); // use variable declare in the parent function
+        }
+       displayName();
+      }
+
+      init();
+
+
+      // lexical scope
+      function myfun() {
+       let name = "fireFox"; 
+        function displayName1() {
+          console.log(name);
+        }
+       return displayName1;
+      }
+
+    const rohitfun =myfun();
+    rohitfun();
+     
+
+    // video pause 10:00
+    
+    </script>
+  </body>
+</html>

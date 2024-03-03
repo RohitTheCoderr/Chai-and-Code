@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        /* You can add your own CSS rules here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin: 10px 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #66afe9;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .success {
+            color: green;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #66afe9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #5c9ed6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Signup Form</h1>
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your name">
+                <span id="name-error" class="error"></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email">
+                <span id="email-error" class="error"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
+                <span id="password-error" class="error"></span>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm your password">
+                <span id="confirm-password-error" class="error"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign Up" class="button">
+                <span id="form-success" class="success"></span>
+            </div>
+        </form>
+    </div>
+    <script>
+        // Get the form element
+        var form = document.getElementById("signup-form");
+
+        // Get the input elements
+        var name = document.getElementById("name");
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+        var confirm_password = document.getElementById("confirm-password");
+
+        // Get the error elements
+        var name_error = document.getElementById("name-error");
+        var email_error = document.getElementById("email-error");
+        var password_error = document.getElementById("password-error");
+        var confirm_password_error = document.getElementById("confirm-password-error");
+
+        // Get the success element
+        var form_success = document.getElementById("form-success");
+         let savepassword=''
+        // Add an event listener for the form submission
+        form.addEventListener("submit", function (event) {
+            // Prevent the default behavior of the form
+            event.preventDefault();
+
+            // Initialize a flag to indicate the validity of the form
+            var valid = true;
+
+            // Clear the previous error and success messages
+            name_error.textContent = "";
+            email_error.textContent = "";
+            password_error.textContent = "";
+            confirm_password_error.textContent = "";
+            form_success.textContent = "";
+
+            // Validate the name input
+            if (name.value === "") {
+                // If the name is empty, show an error message and set the flag to false
+                name_error.textContent = "Name is required";
+                valid = false;
+            }
+
+            // Validate the email input
+            if (email.value === "") {
+                // If the email is empty, show an error message and set the flag to false
+                email_error.textContent = "Email is required";
+                valid = false;
+            } else {
+                // If the email is not empty, check if it is a valid email format
+                var email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                if (!email_regex.test(email.value)) {
+                    // If the email is not valid, show an error message and set the flag to false
+                    email_error.textContent = "Email is not valid";
+                    valid = false;
+                }
+            }
+
+            // Validate the password input
+            if (password.value === "") {
+                // If the password is empty, show an error message and set the flag to false
+                password_error.textContent = "Password is required";
+                valid = false;
+            } else {
+                // If the password is not empty, check if it is at least 8 characters long
+                if (password.value.length < 8) {
+                    // If the password is too short, show an error message and set the flag to false
+                    password_error.textContent = "Password must be at least 8 characters long";
+                    valid = false;
+                }
+            }
+
+            // Validate the confirm password input
+            if (confirm_password.value === "") {
+                // If the confirm password is empty, show an error message and set the flag to false
+                confirm_password_error.textContent = "Confirm password is required";
+                valid = false;
+            } else {
+                // If the confirm password is not empty, check if it matches the password input
+                if (confirm_password.value !== password.value) {
+                    // If the confirm password does not match, show an error message and set the flag to false
+                    confirm_password_error.textContent = "Confirm password does not match";
+                    valid = false;
+                }
+                savepassword = password.value
+                console.log(savepassword);
+            }
+
+            // Check if the form is valid
+            if (valid) {
+                // If the form is valid, show a success message and clear the input values
+                form_success.textContent = "You have successfully signed up!";
+                name.value = "";
+                email.value = "";
+                password.value = "";
+                confirm_password.value = "";
+            }
+        });
+
+        console.log(savepassword);
+    </script>
+</body>
+</html>

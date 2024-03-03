@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+
+</head>
+<body style="background-color: #212121; color: #ffff;">
+    <ul class="language">
+        <li>javascript</li>
+
+    </ul>
+</body>
+<script>
+    function addlanguage(langName) {
+        const li= document.createElement("li")
+        li.innerHTML=`${langName}`;     
+        document.querySelector(".language").appendChild(li)
+
+    }
+    addlanguage("python");
+    addlanguage("mySqul");
+    addlanguage("typescript");
+
+// abhi jo kaam upr ke fun me kiya h vahi kaam hm optimization se karenge
+    function addOptiliLanguage(langName){
+        const li =document.createElement("li");
+        li.appendChild(document.createTextNode(langName))   // yha hamne ek textnode create kiya jisme langName se value aayegi aur sath me use li ke andr append bi kra diya ese ham alg alg bi kr skte the like
+                                                           //  const addtext =document.createTextNode(langName)
+                                                           //  li.appendChild(addtext);
+        document.querySelector(".language").appendChild(li);
+    }
+
+    addOptiliLanguage("java by function 2");
+
+// NOTE:- abit to hmne element create karna sikha h    but ab use edit krna sikhte h 
+
+// EDIT
+const secondLang = document.querySelector("li:nth-child(2)")
+const newLi =document.createElement("li")
+newLi.textContent="mojo"
+// ham ese directly bi kr skte h like
+// const newLi =document.createElement("li").textContent="mojo"
+secondLang.replaceWith(newLi)
+
+// another example of edit
+const firstlang= document.querySelector("li:first-child");
+const text1 =document.createElement("li")
+ text1.textContent ="J-query";
+ firstlang.replaceWith(text1);
+// // we can also do like this 
+// firstlang.outerHTML='<li>J-query</li>'
+
+
+// //  now can know about how to remove element from here
+// // remove
+const lastlang =document.querySelector("li:last-child")
+lastlang.remove();
+
+</script>
+</html>

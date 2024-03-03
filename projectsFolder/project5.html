@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set timeout and set imterval</title>
+    <style>
+        body{
+            background-color: rgb(red, green, blue);
+        }
+    </style>
+</head>
+<body>
+    
+<h1 id="heading">Chia aur Code</h1>
+<h4>click on the Button for change the background color</h4>
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+
+
+<script>
+    let h1 =document.querySelector("#heading")
+const stop=document.querySelector("#stop")
+const start=document.querySelector("#start")
+console.log(start);
+const body =document.querySelector("body");
+console.log(body);
+
+const randomColor= function (){
+// let red = parseInt(Math.random()*126);
+let red =Math.floor(Math.random()*126)    // we can also write for 
+
+// let blue = parseInt(Math.random()*126)
+let blue =Math.floor(Math.random()*126)
+// let green = parseInt(Math.random()*126);
+let green =Math.floor(Math.random()*126)
+const rgb = `rgb(${red}, ${green}, ${blue})`
+
+return rgb; 
+}
+let intervalId
+const startChangingColor= function () {
+    //  intervalId = setInterval(changeColor, 1000)
+    
+    if (!intervalId) {
+         intervalId = setInterval(changeColor, 1000)
+     }
+
+
+    function changeColor(params) {
+        body.style.backgroundColor= randomColor();
+    }
+};
+
+const stopChangingColor =function(){
+    clearInterval(intervalId)
+    intervalId =null;
+}
+ start.addEventListener("click" , startChangingColor)
+ 
+stop.addEventListener("click", stopChangingColor)
+</script>
+
+</body>
+</html>
