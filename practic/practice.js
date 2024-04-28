@@ -18,14 +18,14 @@ arr.sort(function (a, b) {
 });
 console.log(arr);
 
-const newarr = [{ X: 2, X: -5, X: 1, X: 6, X: 0 }];
-newarr.sort(function (a, b) {
-  if (a.X > b.X) {
-    return 1;
-  }
-  if (a.X < b.X) {
-    return -1;
-  }
-  return 0;
-});
-console.log(newarr);
+// const newarr = [{ X: 2, X: -5, X: 1, X: 6, X: 0 }];
+// newarr.sort(function (a, b) {
+//   if (a.X > b.X) {
+//     return 1;
+//   }
+//   if (a.X < b.X) {
+//     return -1;
+//   }
+//   return 0;
+// });
+// console.log(newarr);

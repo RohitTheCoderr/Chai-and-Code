@@ -1,15 +1,15 @@
-// // let myName= 'Rohit'
-// // console.log(myName.length)    // if we print this string length so output is 5
-// // //  But if we add space in this string and then afetr print their length so in the output spaceses is also calculate like
-// // myName = "Rohit      " 
-// // console.log(myName.length);    // output is 11 
-// // //  But we want to only charcter is count in this length 
-// // //  so for this work 1st we can usse .trim().length like 
-// //  console.log(myName.trim().length);
+// let myName= 'Rohit'
+// console.log(myName.length)    // if we print this string length so output is 5
+//  But if we add space in this string and then afetr print their length so in the output spaceses is also calculate like
+// myName = "Rohit      " 
+// console.log(myName.length);    // output is 11 
+//  But we want to only charcter is count in this length 
+//  so for this work 1st we can usse .trim().length like 
+//  console.log(myName.trim().length);
 
-// //  NOTE:- but ham ye trim() word to tab use karte h jab hame ek 2 hi string ko uski tru length count karni ho but kya ho agr hmare pass ese hi abhut sare string variavle ho to kya ham sab ke liye bar bar trim().length likhte rahenge ji nhi 
-// //         ham chahte h ki jaha bi yesa string ho vaha uski actule yani truelength print ya count ho to kya ham ysa kar sakte h chaliye dekhte h
-// //          uske liye ham ek method banana padega uske liye hasme abhi bahut kuch samjhna padega 
+//  NOTE:- but ham ye trim() word to tab use karte h jab hame ek 2 hi string ko uski tru length count karni ho but kya ho agr hmare pass ese hi abhut sare string variavle ho to kya ham sab ke liye bar bar trim().length likhte rahenge ji nhi 
+//         ham chahte h ki jaha bi yesa string ho vaha uski actule yani truelength print ya count ho to kya ham ysa kar sakte h chaliye dekhte h
+//          uske liye ham ek method banana padega uske liye hasme abhi bahut kuch samjhna padega 
 
 
 // let myHeros = ["thor", "spiderman"]
@@ -95,6 +95,6 @@ anotherString.trueLength()
 
 //   so aapne dekha ki kese ham sab string ke liye ek hi method create kiya aur sab me same kaam ho gya bas string ke prototype me ek method add karne se jisme hame jo kuch kaam karana ho
 
-
-
 // // video peuse 7:45 
+
+
